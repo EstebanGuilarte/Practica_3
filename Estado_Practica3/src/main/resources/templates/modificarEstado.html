@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Practica01</title>
+        <meta charset="UTF-8">
+        <link href="css/estilos1.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+
+        <h2> Datos de Estado</h2>
+        <a th:href="@{/}">Regresar</a>  
+        <hr>
+            <form th:action="@{/estado/guardar}"
+                  method="post"
+                  th:object="${estado}">
+                <input type="hidden" name="idEstado" th:field="*{idEstado}"/>
+                <fieldset> 
+                    <label for="nombreEstado">Nombre Estado:</label>
+                    <input type="text" name="nombreEstado"
+                           required=true
+                           placeholder="nombre estado"
+                           size="15"
+                           th:field="*{nombreEstado}"/>
+                </fieldset> 
+
+                <fieldset> 
+                    <label for="nombreCapital">Capital:</label>
+                    <input type="text" name="nombreCapital" 
+                           required=true
+                           placeholder="nombreCapital"
+                           size="15"
+                           th:field="*{nombreCapital}"/>
+                </fieldset> 
+
+                <fieldset> 
+                    <label for="cantidadPoblacion">Poblacion:</label>
+                    <input type="number" name="cantidadPoblacion"
+                           required=true
+                           placeholder="cantidadPoblacion"
+                           size="15"
+                           th:field="*{cantidadPoblacion}"/>
+                </fieldset> 
+
+                <fieldset> 
+                    <label for="cantidadCostas">Costas:</label>
+                    <input type="number" name="cantidadCostas" 
+                           required=true
+                           size="5"
+                           th:field="*{cantidadCostas}"/>
+                </fieldset> 
+                <hr/>
+                <input type="submit" name="guardar" value="guardar"/>
+            </form>
+            <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>
